@@ -1,0 +1,47 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+
+{# PAGINATION LEFT #}
+	{% if is_paginated %}
+		{% if page_obj.has_previous %}
+			<li class="page-item">
+		      <a class="page-link" href="{% url 'blog:category' kategori page_obj.previous_page_number %}" aria-label="Previous">
+		        <span>&laquo;</span>
+		      </a>
+		    </li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="" aria-label="Previous">
+		        	<span aria-disabled="true">&laquo;</span>
+		      	</a>
+		    </li>
+		{% endif %}
+	{% endif %}
+    
+{# PAGINATION NUMBER #}    
+    {% for page in paginator.page_range %}
+    	{% if page is page_obj.number %}
+    	 	<li class="page-item active" aria-current="page"><span class="page-link" href="">{{page}}</span></li>
+    	{% else %}
+    		<li class="page-item"><a class="page-link" href="{% url 'blog:category' kategori page %}">{{page}}</a></li>
+    	{% endif %}
+	{% endfor %}
+
+{# PAGINATION RIGHT #}    
+    {% if is_paginated %}
+    	{% if page_obj.has_next %}
+    		<li class="page-item">
+		      <a class="page-link" href="{% url 'blog:category' kategori page_obj.next_page_number %}" aria-label="Next">
+		        <span>&raquo;</span>
+		      </a>
+		    </li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="" aria-label="Next">
+		        	<span aria-disabled="true">&raquo;</span>
+		      	</a>
+		    </li>
+    	{% endif %}
+    {% endif %}
+  </ul>
+</nav>

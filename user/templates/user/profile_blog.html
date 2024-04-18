@@ -1,0 +1,33 @@
+{% extends "user/base.html" %}
+
+{% block menu %}
+	<ul class="nav nav-tabs">
+	  <li class="nav-item">
+	    <a class="nav-link" aria-current="page" href="{% url 'user:profile' user.pk %}">Profile</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'user:art' user.pk %}">My Art</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link active" href="">My Wrote</a>
+	  </li>
+	</ul>
+
+	<br>
+
+	<div class="d-grid gap-2">
+		<a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Post Your Wrote</a>
+	</div>
+
+	<br>
+	
+	{% for blog in profile_blog %}
+		<ul class="border-bottom">
+			<h1>{{blog.judul}}</h1>
+			<p>Category: {{blog.kategori}} | {{blog.publish}}</p>
+			<p>{{blog.isi|truncatewords:20}}<a href="{% url 'blog:detail' blog.slug %}">Selengkapnya</a></p>
+			<a class="btn btn-primary" href="{% url 'blog:update' blog.pk %}">Update</a>
+			<a class="btn btn-danger" href="{% url 'blog:delete' blog.pk %}">Delete</a>
+		</ul>
+	{% endfor %}
+{% endblock menu %}

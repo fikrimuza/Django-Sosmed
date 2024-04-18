@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+	YOUTH | {{page_title}}		
+{% endblock page_title %}
+
+{% block contents %}
+{#------------------------- JUMBOTRON --------------------------#}
+	<div style="height:700px; text-align:center; background-color:lightskyblue; font-style:italic blok" class="jumbotron jumbotron-fluid">
+		<div class="container">
+			.
+			<h1 style="margin-top:200px; font-family:serif; margin-top:250px" class="display-1">Youth Project</h1>
+			<p class="lead" >Young people change the World</p>
+		</div>
+	</div>
+
+{#------------------------ APPS ITEM -------------------------#}
+	<div class="container-fluid">
+		<div style="border-radius: 100px 0px; margin-bottom: 20px; margin-top: -100px; border: 50px;" id="youth_wrote" class="container bg-light shadow">
+			<a href="{% url 'blog:blog' %}">
+				<div style="height: 200px;" class="row">
+					<div class="col-md-10">
+						<h1 style="margin:70px; font-family:sans-serif;" class="text-dark">Youth Wrote</h1>
+					</div>
+					<div class="col-sm">
+						<img style="margin-top:10px; width:150px;" src="{% static "img/blog.png" %}" alt="img">
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div style="border-radius: 100px 0px; margin-bottom: 20px;" class="container bg-light shadow">
+			<a href="{% url 'art:list' %}">
+				<div style="height: 200px;" class="row">
+					<div class="col-md-10">
+						<h1 style="margin:70px; font-family:sans-serif;" class="text-dark">Youth Art</h1>
+					</div>
+					<div class="col-sm">
+						<img style="margin-top:10px; width:150px;" src="{% static "img/art.png" %}" alt="img">
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div style="border-radius: 100px 0px; margin-bottom: 20px;" class="container bg-light shadow">
+			<a href="{% url 'porto' %}">
+				<div style="height: 200px;" class="row">
+					<div class="col-md-10">
+						<h1 style="margin:70px; font-family:sans-serif;" class="text-dark">About Me</h1>
+					</div>
+					<div class="col-sm">
+						<img style="margin-top:10px; width:150px;" src="{% static "img/user-icon-512.png" %}" alt="img">
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+{% endblock contents %}

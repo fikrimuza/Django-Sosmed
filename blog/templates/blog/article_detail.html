@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h6 style="margin-top:80px;"><img style="width:30px;" src="{{article_detail.user.user_picture.url}}" alt="user_picture"> {{article_detail.user.name}}</h6>
+			<h1>{{article_detail.judul}}</h1>
+			<h6 style="font-weight:normal; font-size:12px;"> Update: {{article_detail.update.date}}</h6>
+			<p style="text-align:justify;">{{article_detail.isi}}</p>
+			<a class="btn btn-primary" href="{% url 'blog:blog' %}">Back</a>
+		</div>
+
+		<div class="col-sm">
+			<h3>Category</h3>
+
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><a href="{% url 'blog:blog' 1 %}"><b>All Categories</b></a></li>
+
+				{% for kategori in kategori_list %}
+					<li class="list-group-item"><a href="{% url 'blog:category' kategori %}">{{kategori}}</a></li>
+				{% endfor %}
+			</ul>
+
+			<h3>Similar Article:</h3>
+			<ul>
+				{% for article in else_article %}
+					{% if forloop.counter is not 3 %}
+						<li class="list-group-item"><a href="{% url 'blog:detail' article.slug %}">{{article.judul}}</a></li>
+					{% endif %}
+				{% endfor %}
+
+				<li><a href="{% url 'blog:category' article_detail.kategori %}">All smimilar Article</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock contents %}

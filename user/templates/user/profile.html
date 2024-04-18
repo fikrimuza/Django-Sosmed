@@ -1,0 +1,15 @@
+{% extends "user/base.html" %}
+
+{% block menu %}
+	<ul class="nav nav-tabs">
+	  <li class="nav-item">
+	    <a class="nav-link active" aria-current="page" href="">Profile</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'user:art' user.pk %}">My Art</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'user:blog' user.pk %}">My Wrote</a>
+	  </li>
+	</ul>
+{% endblock menu %}

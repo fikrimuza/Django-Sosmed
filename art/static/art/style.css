@@ -1,0 +1,15 @@
+/* NAVBAR */
+.user-nav{
+	height: 30px;
+	width: 30px;
+}
+
+.list{
+	list-style: none;
+	margin: 6px;
+}
+
+/* POST */
+.post-image {
+	width: 100px;
+}

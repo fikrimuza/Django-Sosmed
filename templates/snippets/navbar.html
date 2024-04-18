@@ -1,0 +1,60 @@
+<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="{% url 'home' %}">{{page_title}}</a>
+
+			{% block navbar %}
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				  	<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Menu
+							</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{% url 'blog:blog' %}">Youth Wrote</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="{% url 'art:list' %}">Youth Art</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="{% url 'porto' %}">About</a></li>
+							</ul>
+						</li>
+				  	</ul>
+				</div>
+
+				{% if user.is_authenticated %}
+					<li style="list-style:none" class="nav-item dropdown">
+						<div data-bs-toggle="dropdown" role="button" aria-expanded="true">
+							<a>
+							<img style="width:35px;" class="rounded-circle" src="{{user.user_picture.url}}"></a>
+
+							<a>{{user.name}}</a>
+						</div>
+						
+						
+						<ul class="nav-item dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="{% url 'user:profile' user.id %}">Profile</a>
+							</li>
+						</ul>
+					</li>
+
+					<li style="list-style:none">
+						<a style="padding:3px; margin-left:20px" class="btn btn-outline-danger" href="{% url 'account_logout' %}">Logout</a>
+					</li>
+
+				{% else %}
+					<li style="list-style:none" class="nav-item fixed-position">
+						<a style="padding:3px;" class="btn btn-outline-primary" href="{% url 'account_login' %}">Login</a>
+					</li>
+
+					<li style="list-style:none" class="nav-item fixed-position">
+						<a style="padding:3px; margin-left:20px" class="btn btn-outline-primary" href="{% url 'account_signup' %}">Sign Up</a>
+					</li>
+				{% endif %}
+			{% endblock navbar %}
+		</div>
+	</nav>

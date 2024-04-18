@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+	<h1>{{page_title}}</h1>
+
+	<div class="row">
+		<div class="col-md-8">
+			<div class="container">
+				<div class="d-grid gap-2">
+					{% if user.is_authenticated %}
+						<a class="btn btn-outline-primary" href="{% url 'art:create' %}">Post Your Art</a>
+					{% else %}
+						<a class="btn btn-outline-primary" href="{% url 'account_login' %}">Post Your Art</a>
+					{% endif %}
+				</div>
+				<br>
+				{% for list in picture_list %}
+					<ul class="border-bottom">
+						<h6><img style="width:30px" src="{{list.user.user_picture.url}}" alt="user_picture"> {{list.user.name}} <span style="font-weight:normal; font-size:12px;"> • {{list.publish.date}}</span></h6>
+						
+						<img class="post-image" style="width:600px" src="{{list.pictures.url}}">
+						<br>
+
+						<h6 style="margin-top:10px">{{list.user.name}}<span style="font-weight:normal; font-size:14px;"> {{list.caption}}</span></h6>
+
+						<form method="POST">
+							{% csrf_token %}
+							
+							{{form | crispy}}
+							
+							<button type="submit" class="btn btn-primary">Comment</button>
+						</form>
+
+					</ul>
+				{% endfor %}
+			</div>
+
+			{# PAGINATION #}
+			{% include "art/snippets/page_all.html" %}
+		</div>
+
+		<div class="col-sm">
+			<h3>Category</h3>
+
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><a href="{% url 'art:list' %}"><b>All Categories</b></a></li>
+
+				{% for category in category_list %}
+					<li class="list-group-item"><a href="{% url 'art:category' category %}">{{category}}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock contents %}

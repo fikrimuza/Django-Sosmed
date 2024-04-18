@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+	{{user.name}}
+{% endblock page_title %}
+
+
+{% block contents %}
+	<div class="container" style="margin-top:80px">
+		<div class="row">
+			<div class="col-md-4" style="text-align:center;">
+				<img style="width:300px" src="{{user.user_picture.url}}">
+				<br>
+				<h3>{{user.name}}</h3>
+				<br>
+				<button class="btn btn-primary">Edit Profile</button>
+			</div>
+
+			<div class="col-lg">
+				{% block menu %}
+					
+				{% endblock menu %}
+			</div>
+		</div>
+	</div>
+{% endblock contents %}

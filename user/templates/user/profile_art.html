@@ -1,0 +1,31 @@
+{% extends "user/base.html" %}
+
+{% block menu %}
+	<ul class="nav nav-tabs">
+	  <li class="nav-item">
+	    <a class="nav-link" aria-current="page" href="{% url 'user:profile' user.pk %}">Profile</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link active" href="" aria-disabled="true">My Art</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'user:blog' user.pk %}">My Wrote</a>
+	  </li>
+	</ul>
+
+	<br>
+
+	<div class="d-grid gap-2">
+		<a class="btn btn-outline-primary" href="{% url 'art:create' %}">Post Your Art</a>
+	</div>
+
+	<br>
+
+	{% for art in profile_art %}
+		<ul class="border-bottom">
+			<img style="width:400px" src="{{art.pictures.url}}">
+			<a class="btn btn-primary" style="margin-left:50px" href="{% url 'art:update' art.pk %}">Update</a>
+			<a class="btn btn-danger" style="margin:5px" href="{% url 'art:delete' art.pk %}">Delete</a>
+		</ul>		
+	{% endfor %}
+{% endblock menu %}

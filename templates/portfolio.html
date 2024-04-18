@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			{{page_title}}
+		</title>
+
+		{% include "snippets/styles.html" %}
+	</head>
+
+	<body>
+		{% include "snippets/navbarTransparant.html" %}
+
+		<div style="background-color: #0b1d2e; height:660px;" class="jumbotron jumbotron-fluid">
+			<div class="row">
+				<div class="col-sm-1 transparant" style="margin-top:250px;">
+					<div class="container" style="background-color:rgba(255, 255, 255, 0.1); text-align:center; border-radius:0px 30px 30px 0px;">
+						<a href="https://www.linkedin.com/in/fikri-muzadi/"><img style="margin-top:10px" src="{% static "img/linkedIn.png" %}" alt="LinkedIn"></a>
+						<a href="https://github.com/fikrimuza"><img src="{% static "img/github.png" %}" alt="github"></a>
+						<a href="https://medium.com/@fikrimuzadi"><img src="{% static "img/medium.png" %}" alt="Medium"></a>
+						<a href="https://www.instagram.com/fikrimuza/"><img style="margin-bottom:10px" src="{% static "img/ig.png" %}" alt="IG"></a>
+					</div>
+				</div>
+				<div class="col-md-7 text-white" style="margin-top:250px; text-align: center;">
+					<p><img style="width:40px" src="{% static "img/pngwm.png" %}" alt="location"> Semarang, Indonesia </p>
+					<h3> Fikri Muzadi </h3>
+					<h1> Python Developer </h1>
+					<p> I have been involved in the world of programming since I was in college, I have learned and implemented many programming languages, now I am focused on becoming a Python developer </p>
+				</div>
+
+				<div class="col-sm">
+					<img style="width:400px; margin-top:280px;" id="img_porto" src="{% static "img/cv image2.png" %}">
+				</div>
+			</div>
+		</div>
+
+		{% include "snippets/foother.html" %}
+		
+		{% include "snippets/scripts.html" %}
+	</body>
+</html>

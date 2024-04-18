@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		{% block page_title %}
+			
+		{% endblock page_title %}
+	</title>
+
+	{% include "snippets/styles.html" %}
+</head>
+
+<body>
+	{% include "snippets/navbar.html" %}
+
+	{% block contents %}
+		
+	{% endblock contents %}
+
+	{% include "snippets/foother.html" %}
+	
+	{% include "snippets/scripts.html" %}
+</body>
+</html>
